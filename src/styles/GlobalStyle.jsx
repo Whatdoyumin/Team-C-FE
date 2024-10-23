@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   :root {
     /* color */
     --color-blue-main: #588BE2;
+    --color-gray-main: #61646B;
 
     /* size */
     --size-max-width: 393px;
@@ -25,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     width: min(100%, var(--size-max-width));
     margin: 0 auto;
     background-color: #ffffff;
+    font-family: 'Pretendard-Regular';
 
     #root {
       height: 100vh;
