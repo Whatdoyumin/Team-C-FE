@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
     /* size */
     --size-max-width: 393px;
-    --size-header: 46px;
+    --size-header: 80px;
     --size-navbar: 89px;
     --size-side-gap: 20px;
   }
@@ -32,6 +32,10 @@ const GlobalStyle = createGlobalStyle`
       height: 100vh;
       padding: calc(var(--size-header) + 1rem) var(--size-side-gap) calc(var(--size-navbar) + 1rem);
       position: relative;
+    }
+
+    h1, h2, span, div {
+      user-select: none;
     }
 
     button {

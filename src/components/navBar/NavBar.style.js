@@ -25,6 +25,7 @@ const NavItem = styled.div`
   align-items: center;
   color: ${(props) =>
     props.selected ? 'var(--color-blue-main)' : 'var(--color-gray-main)'};
+  cursor: pointer;
 
   svg {
     width: 1.8rem;
