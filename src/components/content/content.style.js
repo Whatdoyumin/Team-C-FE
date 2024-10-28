@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { RiArrowRightWideLine } from 'react-icons/ri';
 import { FaCheck } from 'react-icons/fa';
-const Container = styled.div`
+import { Link } from 'react-router-dom';
+const Container = styled(Link)`
   display: flex;
   width: 319px;
   height: 40px;
   gap: 10px;
   align-items: center;
+  text-decoration: none;
 `;
 
 const Button = styled.button`

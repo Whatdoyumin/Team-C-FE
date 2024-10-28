@@ -8,12 +8,12 @@ const Content = () => {
   };
 
   return (
-    <S.Container>
+    <S.Container to="/policy/1">
       <S.Button onClick={handleClick} isChecked={isChecked}>
         {isChecked && <S.CheckImg />}
       </S.Button>
       <S.Policy>
-        <S.Title>글이 길면 어떻게 될까요 과연 두구두구</S.Title>
+        <S.Title>청년문화예술패스</S.Title>
         <S.StyledIcon />
       </S.Policy>
     </S.Container>

@@ -1,6 +1,5 @@
 // Banner.js
 import * as S from './banner.style';
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -13,6 +12,8 @@ const Banner = () => {
     slidesToScroll: 1,
     lazyLoad: true,
     arrows: false,
+    autoplay: true,
+    autoplaySpeed: 10000,
   };
 
   return (

@@ -25,6 +25,7 @@ const PolicyList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 345px;
 `;
 
 export { Container, Title, PolicyList };
