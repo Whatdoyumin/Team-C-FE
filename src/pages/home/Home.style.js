@@ -4,18 +4,34 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 190px);
-  justify-content: center;
+  align-items: center;
   position: relative;
   gap: 20px;
   transform: translateX(20px);
-  width: 100%;
+  max-width: 100%;
   margin-left: calc(-1 * var(--size-side-gap));
 `;
 
 const PolicyContainer = styled.div`
   flex: 1;
   overflow-y: scroll;
-  width: 100%;
+  width: 345px;
 `;
 
-export { Container, PolicyContainer };
+const Title = styled.div`
+  font-size: 22px;
+  height: 25px;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.7)
+  );
+  backdrop-filter: blur(4px);
+  color: #53565d;
+  font-weight: bold;
+  z-index: 3;
+`;
+
+export { Container, PolicyContainer, Title };
