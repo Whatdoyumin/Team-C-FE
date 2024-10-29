@@ -91,7 +91,7 @@ const CommentIcon = styled(FaCommentDots)`
 const WriteButton = styled.div`
   position: fixed;
   left: 50%;
-  bottom: 15%;
+  bottom: 13.5%;
   transform: translate(-50%, 50%);
 
   button {
@@ -100,8 +100,8 @@ const WriteButton = styled.div`
     align-items: center;
     gap: 6px;
 
-    width: 85px;
-    height: 30px;
+    width: 90px;
+    height: 35px;
     border-radius: 20px;
     font-size: 15px;
     cursor: pointer;
