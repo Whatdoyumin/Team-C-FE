@@ -3,9 +3,14 @@ import Slider from 'react-slick';
 
 const StyledSlider = styled(Slider)`
   width: 345px;
+  .slick-list {
+    overflow: hidden;
+    border-radius: 20px; /* 슬라이드 리스트 전체에 border-radius */
+  }
   .slick-slide {
     display: flex;
     justify-content: center;
+    border-radius: 20px;
   }
 
   .slick-dots {
@@ -41,7 +46,7 @@ const Banner = styled.div`
   align-items: center;
   min-width: 345px;
   min-height: 150px;
-  border-radius: 20px;
+
   background-color: #53565d;
   background-image: radial-gradient(
     circle at top right,

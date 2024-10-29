@@ -1,11 +1,11 @@
 import * as S from './banner.style';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import img1 from '../../images/주택청약.svg';
-import img2 from '../../images/청년도약계좌.svg';
-import img3 from '../../images/분위.svg';
-import img4 from '../../images/국장.svg';
-import img5 from '../../images/내일배움카드.svg';
+import img1 from '../../images/bannerImg1.svg';
+import img2 from '../../images/bannerImg2.svg';
+import img3 from '../../images/bannerImg3.svg';
+import img4 from '../../images/bannerImg4.svg';
+import img5 from '../../images/bannerImg5.svg';
 
 const Banner = () => {
   const settings = {
@@ -17,7 +17,7 @@ const Banner = () => {
     lazyLoad: true,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 10000,
+    autoplaySpeed: 5000,
   };
 
   return (
