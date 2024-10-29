@@ -32,6 +32,7 @@ const Title = styled.div`
   color: #53565d;
   font-weight: bold;
   z-index: 3;
+  margin-bottom: 10px;
 `;
 
 export { Container, PolicyContainer, Title };
