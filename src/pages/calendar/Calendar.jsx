@@ -44,7 +44,7 @@ const Calendar = () => {
 
       for (let i = 0; i < 7; i++) {
         const isCurrentMonth = day >= monthStart && day <= monthEnd;
-        const editDay = day.toDateString();
+        const editDay = format(day, 'yyyy-MM-dd');
         const isSelectedDay = editDay === selectDate;
         console.log(editDay);
         week.push(
@@ -61,7 +61,7 @@ const Calendar = () => {
                 </S.DaySpan>
                 <S.DayPolicyList>
                   {/* 아마 key 값으로 하겠죠? */}
-                  {editDay === 'Sat Oct 19 2024' ? (
+                  {editDay === '2024-10-19' ? (
                     <>
                       {/* 여기서 map 돌릴듯? 따로 컴포넌트 뺄 수도 있을 것 같아여... */}
                       <S.DayPolicy>
@@ -93,8 +93,17 @@ const Calendar = () => {
     return days;
   };
 
-  const prevMonth = () => setCurrentDate(subMonths(currentDate, 1));
-  const nextMonth = () => setCurrentDate(addMonths(currentDate, 1));
+  const prevMonth = () => {
+    const newDate = subMonths(currentDate, 1);
+    setCurrentDate(newDate);
+    setSelectDate(startOfMonth(newDate).toDateString());
+  };
+
+  const nextMonth = () => {
+    const newDate = addMonths(currentDate, 1);
+    setCurrentDate(newDate);
+    setSelectDate(startOfMonth(newDate).toDateString());
+  };
 
   return (
     <S.Layout>
