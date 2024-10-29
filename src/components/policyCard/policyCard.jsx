@@ -1,11 +1,32 @@
 import * as S from './policyCard.style';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import img1 from '../../images/문화예술패스.svg';
+import img2 from '../../images/전세대출.svg';
+import img3 from '../../images/청년마음상담.svg';
+import img4 from '../../images/청년희망계좌.svg';
 
-const PolicyCard = () => {
+const PolicyCard = ({ cardId }) => {
   const [isClicked, setIsClicked] = useState(false);
   const handleBookmarkClick = () => {
     setIsClicked(!isClicked);
   };
+
+  const ImagesArr = [img1, img2, img3, img4];
+  const [randomIndex, setRandomIndex] = useState(null);
+
+  useEffect(() => {
+    const storedIndex = localStorage.getItem(`randomImageIndex_${cardId}`);
+    if (storedIndex) {
+      setRandomIndex(parseInt(storedIndex, 10));
+    } else {
+      const newIndex = Math.floor(Math.random() * ImagesArr.length);
+      setRandomIndex(newIndex);
+      localStorage.setItem(`randomImageIndex_${cardId}`, newIndex);
+    }
+  }, [cardId]);
+
+  const RandomImage = randomIndex !== null ? ImagesArr[randomIndex] : null;
+
   return (
     <S.Container>
       <S.Card to="/policy/1">
@@ -16,7 +37,7 @@ const PolicyCard = () => {
           </S.Content>
         </S.Texts>
         <S.Img>
-          <img src="src/components/policyCard/rb_60312.png"></img>
+          {RandomImage && <img src={RandomImage} alt="랜덤 이미지" />}
         </S.Img>
       </S.Card>
 

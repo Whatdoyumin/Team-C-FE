@@ -5,11 +5,11 @@ const PolicyList = () => {
   return (
     <S.Container>
       <S.PolicyList>
-        <PolicyCard />
-        <PolicyCard />
-        <PolicyCard />
-        <PolicyCard />
-        <PolicyCard />
+        <PolicyCard cardId="1" />
+        <PolicyCard cardId="2" />
+        <PolicyCard cardId="3" />
+        <PolicyCard cardId="4" />
+        <PolicyCard cardId="5" />
       </S.PolicyList>
     </S.Container>
   );

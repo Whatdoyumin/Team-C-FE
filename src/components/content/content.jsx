@@ -8,11 +8,11 @@ const Content = () => {
   };
 
   return (
-    <S.Container to="/policy/1">
+    <S.Container>
       <S.Button onClick={handleClick} isChecked={isChecked}>
         {isChecked && <S.CheckImg />}
       </S.Button>
-      <S.Policy>
+      <S.Policy to="/policy/1">
         <S.Title>청년문화예술패스</S.Title>
         <S.StyledIcon />
       </S.Policy>

@@ -2,13 +2,12 @@ import styled from 'styled-components';
 import { RiArrowRightWideLine } from 'react-icons/ri';
 import { FaCheck } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-const Container = styled(Link)`
+const Container = styled.div`
   display: flex;
   width: 319px;
   height: 40px;
   gap: 10px;
   align-items: center;
-  text-decoration: none;
 `;
 
 const Button = styled.button`
@@ -17,14 +16,15 @@ const Button = styled.button`
   border-radius: 50%;
   border: ${(props) =>
     props.isChecked ? 'none' : '1px dotted rgba(0, 0, 0, 0.3)'};
-  background-color: ${(props) => (props.isChecked ? '#588BE2' : 'white')};
-  position: relative;
+  background-color: ${(props) =>
+    props.isChecked ? 'var(--color-blue-main)' : 'white'};
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
-const Policy = styled.div`
+const Policy = styled(Link)`
   display: flex;
   background-color: white;
   width: 277px;
@@ -32,17 +32,18 @@ const Policy = styled.div`
   border-radius: 8px;
   align-items: center;
   justify-content: space-between;
+  text-decoration: none;
 `;
 
 const Title = styled.div`
   font-size: 22px;
-  margin-left: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 231px;
-  font-weight: semi-bold;
-  color: #61646b;
+  font-weight: 600;
+  color: var(--color-gray-main);
+  margin-left: 20px;
 `;
 
 const StyledIcon = styled(RiArrowRightWideLine)`

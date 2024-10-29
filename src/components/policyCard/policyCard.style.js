@@ -57,7 +57,7 @@ const Texts = styled.div`
 const Title = styled.div`
   display: flex;
   font-size: 26px;
-  color: #588be2;
+  color: var(--color-blue-main);
   font-weight: bold;
 `;
 
