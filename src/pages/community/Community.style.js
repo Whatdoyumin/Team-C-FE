@@ -88,6 +88,32 @@ const CommentIcon = styled(FaCommentDots)`
   font-size: 15px;
 `;
 
+const WriteButton = styled.div`
+  position: fixed;
+  left: 50%;
+  bottom: 15%;
+  transform: translate(-50%, 50%);
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    width: 85px;
+    height: 30px;
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #ddd;
+    color: var(--color-gray-main);
+
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+`;
+
 export {
   Container,
   SearchContainer,
@@ -95,4 +121,5 @@ export {
   BoardContainer,
   PostItem,
   CommentIcon,
+  WriteButton,
 };

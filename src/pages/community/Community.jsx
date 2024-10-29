@@ -1,4 +1,5 @@
 import * as S from './Community.style';
+import { BsPencil } from 'react-icons/bs';
 
 function Community() {
   return (
@@ -53,6 +54,12 @@ function Community() {
           <S.CommentIcon />
         </S.PostItem>
       </S.BoardContainer>
+      <S.WriteButton>
+        <button>
+          <BsPencil />
+          글쓰기
+        </button>
+      </S.WriteButton>
     </S.Container>
   );
 }
