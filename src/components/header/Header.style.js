@@ -13,29 +13,41 @@ const Header = styled.header`
   justify-content: center;
   align-items: end;
   padding: 0 var(--size-side-gap);
+
+  svg {
+    width: 28px;
+    height: 28px;
+    color: var(--color-gray-600);
+  }
 `;
 
 const Nav = styled.nav`
   width: 100%;
   height: 50px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--color-gray-300);
   position: relative;
 
   svg {
-    width: 2rem;
-    height: 2rem;
-    color: var(--color-gray-700);
+    position: absolute;
   }
 `;
 
 const Profile = styled.div`
   width: 28px;
   height: 28px;
+  position: absolute;
+  right: 10px;
+`;
+
+const UserImg = styled.img`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  border: 1px solid var(--color-gray-400);
   border-radius: 14px;
-  background-color: var(--color-gray-400);
 `;
 
 const Logo = styled(Link)`
@@ -45,9 +57,8 @@ const Logo = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   position: absolute;
-  margin-left: calc(
-    (var(--size-max-width) - var(--size-logo)) / 2 - var(--size-side-gap)
-  );
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
-export { Header, Nav, Logo, Profile };
+export { Header, Nav, Logo, Profile, UserImg };
