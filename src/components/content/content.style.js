@@ -15,9 +15,9 @@ const Button = styled.button`
   height: 28px;
   border-radius: 50%;
   border: ${(props) =>
-    props.isChecked ? 'none' : '1px dotted rgba(0, 0, 0, 0.3)'};
+    props.checked ? 'none' : '1px dotted rgba(0, 0, 0, 0.3)'};
   background-color: ${(props) =>
-    props.isChecked ? 'var(--color-blue-main)' : 'white'};
+    props.checked ? 'var(--color-blue-main)' : 'white'};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,6 +49,7 @@ const Title = styled.div`
 const StyledIcon = styled(RiArrowRightWideLine)`
   font-size: 20px;
   margin-right: 10px;
+  color: #61646b;
 `;
 
 const CheckImg = styled(FaCheck)`
