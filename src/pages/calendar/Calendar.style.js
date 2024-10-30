@@ -3,7 +3,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { IoIosArrowForward } from 'react-icons/io';
 
 const Layout = styled.div`
-  gap: 30px;
+  gap: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +27,7 @@ const Button = styled.div`
 `;
 
 const CalendarBox = styled.div`
-  background-color: #f3f3f3;
+  background-color: var(--color-gray-50);
   width: 345px;
   align-items: center;
   display: flex;
@@ -79,7 +79,7 @@ const Day = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${(props) =>
-    props.selected ? '#b7b7b7' : 'white'}; // selected 상태에 따라 배경색 변경
+    props.selected ? 'var(--color-gray-500)' : 'white'};
   align-items: center;
   border: none;
   border-radius: 5px;
@@ -90,8 +90,7 @@ const DaySpan = styled.span`
   position: relative;
   font-weight: 700;
   margin-top: 2px;
-  color: ${(props) =>
-    props.selected ? 'white' : 'black'}; // selected 상태에 따라 글자색 변경
+  color: ${(props) => (props.selected ? 'white' : 'black')};
 `;
 
 const DayPolicy = styled.div`
@@ -116,17 +115,26 @@ const DayPolicyText = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: ${(props) => (props.isStart ? '#426ACC' : '#F05353')};
+  color: ${(props) =>
+    props.isSelected
+      ? props.$started
+        ? 'var(--color-blue-900)'
+        : 'var(--color-red-900)'
+      : props.$started
+        ? 'var(--color-blue-800)'
+        : 'var(--color-red-800)'};
 `;
 
 const ArrowBackIcon = styled(IoIosArrowBack)`
   width: 25px;
-  color: #f05353;
+  color: ${(props) =>
+    props.isSelected ? 'var(--color-red-900)' : 'var(--color-red-800)'};
 `;
 
 const ArrowForwardIcon = styled(IoIosArrowForward)`
   width: 25px;
-  color: #426acc; /* 작은따옴표 제거 */
+  color: ${(props) =>
+    props.isSelected ? 'var(--color-blue-900)' : 'var(--color-blue-800)'};
 `;
 export {
   Layout,
