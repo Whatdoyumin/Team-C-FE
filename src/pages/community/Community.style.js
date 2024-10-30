@@ -5,8 +5,10 @@ import { FaCommentDots } from 'react-icons/fa';
 const Container = styled.div`
   width: 100%;
   max-width: 800px;
+  height: calc(100vh - 190px);
   margin: 0 auto;
   padding: 10px;
+  overflow-y: auto;
 `;
 
 const SearchContainer = styled.div`
