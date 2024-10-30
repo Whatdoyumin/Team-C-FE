@@ -4,17 +4,22 @@ import { BsBookmarkDash, BsBookmarkFill } from 'react-icons/bs';
 const Container = styled.div`
   display: flex;
   position: relative;
+  flex-direction: column;
+  height: calc(100vh - 190px);
+  overflow-y: scroll;
+`;
+
+const PolicyInfoCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
   background: linear-gradient(
     to top left,
     rgba(244, 244, 244, 0.1) -10%,
     rgba(116, 215, 216, 0.1) 11%,
     rgba(88, 139, 226, 0.1) 100%
   );
-  border-radius: 20px;
-  height: 648px;
-  flex-direction: column;
-  height: calc(100vh - 190px);
-  overflow-y: scroll;
+  width: 100%;
 `;
 
 const BookmarkIcon = styled(BsBookmarkDash)`
@@ -25,7 +30,7 @@ const BookmarkIcon = styled(BsBookmarkDash)`
   width: 40px;
   cursor: pointer;
   z-index: 1;
-  color: var(--color-blue-main);
+  color: var(--color-blue-700);
   width: 25px;
   height: 25px;
 `;
@@ -37,7 +42,7 @@ const BookmarkFillIcon = styled(BsBookmarkFill)`
   width: 40px;
   cursor: pointer;
   z-index: 1;
-  color: var(--color-blue-main);
+  color: var(--color-blue-700);
   width: 25px;
   height: 25px;
 `;
@@ -50,7 +55,7 @@ const Header = styled.div`
 const Title = styled.div`
   display: flex;
   font-size: 26px;
-  color: var(--color-blue-main);
+  color: var(--color-blue-700);
   font-weight: bold;
 `;
 
@@ -65,13 +70,13 @@ const Contents = styled.div`
 `;
 
 const Line = styled.div`
-  border-top: 1px solid #d9d9d9;
+  border-top: 1px solid var(--color-gray-300);
   width: 90%;
   display: flex;
   align-self: center;
 `;
 const Line2 = styled.div`
-  border-right: 1px solid #d9d9d9;
+  border-right: 1px solid var(--color-gray-300);
   height: 550px;
   display: flex;
   z-index: 1;
@@ -96,6 +101,7 @@ const Data = styled.div`
   height: 40px;
   font-size: 15px;
   font-weight: 600;
+  margin-left: 10px;
 `;
 export {
   Container,
@@ -110,4 +116,5 @@ export {
   BookmarkFillIcon,
   BookmarkIcon,
   Line2,
+  PolicyInfoCard,
 };
