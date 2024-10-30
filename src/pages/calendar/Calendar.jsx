@@ -19,8 +19,8 @@ const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
 const Calendar = () => {
   const today = new Date();
   const [currentDate, setCurrentDate] = useState(today);
-  const [selectDate, setSelectDate] = useState(today.toDateString());
-
+  const [selectDate, setSelectDate] = useState(format(today, 'yyyy-MM-dd'));
+  console.log(selectDate);
   const handleSelectDate = (data) => {
     setSelectDate(data);
   };
@@ -38,7 +38,7 @@ const Calendar = () => {
   const generateCalendarDays = () => {
     const days = [];
     let day = startDate;
-
+    const started = true; // 수정 예정
     while (day <= endDate) {
       const week = [];
 
@@ -46,7 +46,6 @@ const Calendar = () => {
         const isCurrentMonth = day >= monthStart && day <= monthEnd;
         const editDay = format(day, 'yyyy-MM-dd');
         const isSelectedDay = editDay === selectDate;
-        console.log(editDay);
         week.push(
           <S.Day
             key={editDay}
@@ -65,14 +64,28 @@ const Calendar = () => {
                     <>
                       {/* 여기서 map 돌릴듯? 따로 컴포넌트 뺄 수도 있을 것 같아여... */}
                       <S.DayPolicy>
-                        <S.ArrowForwardIcon />
-                        <S.DayPolicyText isStart={true}>
+                        {started ? (
+                          <S.ArrowForwardIcon selected={isSelectedDay} />
+                        ) : (
+                          <S.ArrowBackIcon selected={isSelectedDay} />
+                        )}
+                        <S.DayPolicyText
+                          $started={started}
+                          selected={isSelectedDay}
+                        >
                           청년정책1글이길어져볼게얍
                         </S.DayPolicyText>
                       </S.DayPolicy>
                       <S.DayPolicy>
-                        <S.ArrowBackIcon />
-                        <S.DayPolicyText isStart={false}>
+                        {started ? (
+                          <S.ArrowForwardIcon selected={isSelectedDay} />
+                        ) : (
+                          <S.ArrowBackIcon selected={isSelectedDay} />
+                        )}
+                        <S.DayPolicyText
+                          $started={started}
+                          selected={isSelectedDay}
+                        >
                           청년정책2글이길어져볼게얍
                         </S.DayPolicyText>
                       </S.DayPolicy>
@@ -96,13 +109,13 @@ const Calendar = () => {
   const prevMonth = () => {
     const newDate = subMonths(currentDate, 1);
     setCurrentDate(newDate);
-    setSelectDate(startOfMonth(newDate).toDateString());
+    setSelectDate(format(startOfMonth(newDate), 'yyyy-MM-dd'));
   };
 
   const nextMonth = () => {
     const newDate = addMonths(currentDate, 1);
     setCurrentDate(newDate);
-    setSelectDate(startOfMonth(newDate).toDateString());
+    setSelectDate(format(startOfMonth(newDate), 'yyyy-MM-dd'));
   };
 
   return (

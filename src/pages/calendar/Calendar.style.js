@@ -78,8 +78,7 @@ const Day = styled.div`
   height: 51px;
   display: flex;
   flex-direction: column;
-  background-color: ${(props) =>
-    props.selected ? '#b7b7b7' : 'white'}; // selected 상태에 따라 배경색 변경
+  background-color: ${(props) => (props.selected ? '#b7b7b7' : 'white')};
   align-items: center;
   border: none;
   border-radius: 5px;
@@ -90,8 +89,7 @@ const DaySpan = styled.span`
   position: relative;
   font-weight: 700;
   margin-top: 2px;
-  color: ${(props) =>
-    props.selected ? 'white' : 'black'}; // selected 상태에 따라 글자색 변경
+  color: ${(props) => (props.selected ? 'white' : 'black')};
 `;
 
 const DayPolicy = styled.div`
@@ -116,17 +114,24 @@ const DayPolicyText = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: ${(props) => (props.isStart ? '#426ACC' : '#F05353')};
+  color: ${(props) =>
+    props.isSelected
+      ? props.$started
+        ? '#5058EE'
+        : '#DF4747'
+      : props.$started
+        ? '#426ACC'
+        : '#F05353'};
 `;
 
 const ArrowBackIcon = styled(IoIosArrowBack)`
   width: 25px;
-  color: #f05353;
+  color: ${(props) => (props.isSelected ? '#DF4747' : '#f05353')};
 `;
 
 const ArrowForwardIcon = styled(IoIosArrowForward)`
   width: 25px;
-  color: #426acc; /* 작은따옴표 제거 */
+  color: ${(props) => (props.isSelected ? '#5058EE' : '#426acc')};
 `;
 export {
   Layout,
