@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
     --size-header: 80px;
     --size-navbar: 89px;
     --size-side-gap: 24px;
+    --size-logo: 97px;
   }
 
   * {
@@ -49,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
 
     #root {
       height: 100vh;
-      padding: calc(var(--size-header) + 1rem) var(--size-side-gap) calc(var(--size-navbar) + 1rem);
+      padding: calc(var(--size-header) + 0.5rem) var(--size-side-gap) calc(var(--size-navbar) + 0.5rem);
       position: relative;
     }
 
