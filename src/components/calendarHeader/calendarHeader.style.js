@@ -16,12 +16,12 @@ const Header = styled.div`
   width: 250px;
   min-height: 40px;
   border-radius: 30px;
-  background-color: #f3f3f3;
+  background-color: var(--color-gray-50);
 `;
 
 const Title = styled.div`
   font-size: 20px;
-  color: #53565d;
+  color: var(--color-gray-800);
   font-weight: 700;
   display: flex;
   min-width: 110px;

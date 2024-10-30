@@ -17,7 +17,7 @@ const Button = styled.button`
   border: ${(props) =>
     props.checked ? 'none' : '1px dotted rgba(0, 0, 0, 0.3)'};
   background-color: ${(props) =>
-    props.checked ? 'var(--color-blue-main)' : 'white'};
+    props.checked ? 'var(--color-blue-700)' : 'white'};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,14 +42,14 @@ const Title = styled.div`
   text-overflow: ellipsis;
   width: 231px;
   font-weight: 600;
-  color: var(--color-gray-main);
+  color: var(--color-gray-700);
   margin-left: 20px;
 `;
 
 const StyledIcon = styled(RiArrowRightWideLine)`
   font-size: 20px;
   margin-right: 10px;
-  color: #61646b;
+  color: var(--color-gray-700);
 `;
 
 const CheckImg = styled(FaCheck)`

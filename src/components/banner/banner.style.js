@@ -5,7 +5,7 @@ const StyledSlider = styled(Slider)`
   width: 345px;
   .slick-list {
     overflow: hidden;
-    border-radius: 20px; /* 슬라이드 리스트 전체에 border-radius */
+    border-radius: 20px;
   }
   .slick-slide {
     display: flex;
@@ -46,8 +46,7 @@ const Banner = styled.div`
   align-items: center;
   min-width: 345px;
   min-height: 150px;
-
-  background-color: #53565d;
+  background-color: var(--color-gray-800);
   background-image: radial-gradient(
     circle at top right,
     rgba(226, 161, 88, 0.1),
@@ -58,12 +57,12 @@ const Banner = styled.div`
   background-size: cover;
 `;
 const Texts = styled.div`
-  display: flex; /* Flexbox 사용 */
-  flex-direction: column; /* 세로 정렬 유지 */
-  width: 60%; /* 폭을 조정하여 비율을 맞춤 */
-  justify-content: center; /* 수직 중앙 정렬 */
-  margin-left: 20px; /* 여백 설정 */
-  gap: 10px; /* 요소 간 간격 설정 */
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  justify-content: center;
+  margin-left: 20px;
+  gap: 10px;
 `;
 
 const Title = styled.div`
