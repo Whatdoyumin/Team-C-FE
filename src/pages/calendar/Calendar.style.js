@@ -3,7 +3,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { IoIosArrowForward } from 'react-icons/io';
 
 const Layout = styled.div`
-  gap: 30px;
+  gap: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
