@@ -20,10 +20,6 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: '/settings',
-    element: <UserSettings />,
-  },
-  {
     path: '/',
     element: <RootLayout />,
     errorElement: <NotFound />,
