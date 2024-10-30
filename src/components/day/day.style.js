@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  background-color: #f3f3f3;
+  background-color: var(--color-gray-50);
   width: 345px;
   flex-direction: column;
   border-radius: 13px;
@@ -18,7 +18,7 @@ const Date = styled.div`
   border-radius: 20px;
   font-size: 22px;
   margin: 13px;
-  color: #53565d;
+  color: var(--color-gray-800);
 `;
 
 const Contents = styled.div`
