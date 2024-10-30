@@ -27,7 +27,7 @@ const Button = styled.div`
 `;
 
 const CalendarBox = styled.div`
-  background-color: #f3f3f3;
+  background-color: var(--color-gray-50);
   width: 345px;
   align-items: center;
   display: flex;
@@ -78,7 +78,8 @@ const Day = styled.div`
   height: 51px;
   display: flex;
   flex-direction: column;
-  background-color: ${(props) => (props.selected ? '#b7b7b7' : 'white')};
+  background-color: ${(props) =>
+    props.selected ? 'var(--color-gray-500)' : 'white'};
   align-items: center;
   border: none;
   border-radius: 5px;
@@ -117,21 +118,23 @@ const DayPolicyText = styled.div`
   color: ${(props) =>
     props.isSelected
       ? props.$started
-        ? '#5058EE'
-        : '#DF4747'
+        ? 'var(--color-blue-900)'
+        : 'var(--color-red-900)'
       : props.$started
-        ? '#426ACC'
-        : '#F05353'};
+        ? 'var(--color-blue-800)'
+        : 'var(--color-red-800)'};
 `;
 
 const ArrowBackIcon = styled(IoIosArrowBack)`
   width: 25px;
-  color: ${(props) => (props.isSelected ? '#DF4747' : '#f05353')};
+  color: ${(props) =>
+    props.isSelected ? 'var(--color-red-900)' : 'var(--color-red-800)'};
 `;
 
 const ArrowForwardIcon = styled(IoIosArrowForward)`
   width: 25px;
-  color: ${(props) => (props.isSelected ? '#5058EE' : '#426acc')};
+  color: ${(props) =>
+    props.isSelected ? 'var(--color-blue-900)' : 'var(--color-blue-800)'};
 `;
 export {
   Layout,

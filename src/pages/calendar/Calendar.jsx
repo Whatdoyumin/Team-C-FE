@@ -51,7 +51,9 @@ const Calendar = () => {
             key={editDay}
             selected={isSelectedDay}
             onClick={isCurrentMonth ? () => handleSelectDate(editDay) : null}
-            style={{ backgroundColor: isCurrentMonth ? null : '#f3f3f3' }}
+            style={{
+              backgroundColor: isCurrentMonth ? null : 'var(--color-gray-50)',
+            }}
           >
             {isCurrentMonth ? (
               <>
