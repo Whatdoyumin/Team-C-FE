@@ -8,23 +8,36 @@ import {
   startOfWeek,
   endOfWeek,
   addDays,
-  isSameDay,
 } from 'date-fns';
-import * as S from './calendar.style';
+import * as S from './Calendar.style';
 import CalendarHeader from '../../components/calendarHeader/calendarHeader';
 import Day from '../../components/day/day';
+import policyDatas from '../../moks/policyData.json';
+import userInfo from '../../moks/userData.json';
 
+const user = userInfo[0];
 const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
 
+function getBookmarkPolicyId() {
+  return user.bookmarked;
+}
+function getPolicyInfo(policies) {
+  return policies.flatMap((id) =>
+    policyDatas.filter((policy) => policy.bizId === id)
+  );
+}
 const Calendar = () => {
+  const [isLogin, setIsLogin] = useState(true);
   const today = new Date();
   const [currentDate, setCurrentDate] = useState(today);
   const [selectDate, setSelectDate] = useState(format(today, 'yyyy-MM-dd'));
-  console.log(selectDate);
+
   const handleSelectDate = (data) => {
     setSelectDate(data);
   };
 
+  const policies = isLogin ? getPolicyInfo(getBookmarkPolicyId()) : [];
+  console.log(policies);
   const getMonthDates = () => {
     const monthStart = startOfMonth(currentDate);
     const monthEnd = endOfMonth(monthStart);
@@ -38,7 +51,7 @@ const Calendar = () => {
   const generateCalendarDays = () => {
     const days = [];
     let day = startDate;
-    const started = true; // 수정 예정
+
     while (day <= endDate) {
       const week = [];
 
@@ -61,38 +74,29 @@ const Calendar = () => {
                   {format(day, 'd')}
                 </S.DaySpan>
                 <S.DayPolicyList>
-                  {/* 아마 key 값으로 하겠죠? */}
-                  {editDay === '2024-10-19' ? (
-                    <>
-                      {/* 여기서 map 돌릴듯? 따로 컴포넌트 뺄 수도 있을 것 같아여... */}
-                      <S.DayPolicy>
-                        {started ? (
-                          <S.ArrowForwardIcon selected={isSelectedDay} />
-                        ) : (
-                          <S.ArrowBackIcon selected={isSelectedDay} />
-                        )}
+                  {policies.map((policy) =>
+                    policy.startDate === editDay ? (
+                      <S.DayPolicy key={`${policy.bizId}_start`}>
+                        <S.ArrowForwardIcon selected={isSelectedDay} />
                         <S.DayPolicyText
-                          $started={started}
+                          $started={true}
                           selected={isSelectedDay}
                         >
-                          청년정책1글이길어져볼게얍
+                          {policy.policyTitle}
                         </S.DayPolicyText>
                       </S.DayPolicy>
-                      <S.DayPolicy>
-                        {started ? (
-                          <S.ArrowForwardIcon selected={isSelectedDay} />
-                        ) : (
-                          <S.ArrowBackIcon selected={isSelectedDay} />
-                        )}
+                    ) : policy.endDate === editDay ? (
+                      <S.DayPolicy key={`${policy.bizId}_end`}>
+                        <S.ArrowBackIcon selected={isSelectedDay} />
                         <S.DayPolicyText
-                          $started={started}
+                          $started={false}
                           selected={isSelectedDay}
                         >
-                          청년정책2글이길어져볼게얍
+                          {policy.policyTitle}
                         </S.DayPolicyText>
                       </S.DayPolicy>
-                    </>
-                  ) : null}
+                    ) : null
+                  )}
                 </S.DayPolicyList>
               </>
             ) : null}
@@ -122,20 +126,34 @@ const Calendar = () => {
 
   return (
     <S.Layout>
-      <CalendarHeader
-        currentDate={currentDate}
-        prevMonth={prevMonth}
-        nextMonth={nextMonth}
-      />
-      <S.CalendarBox>
-        <S.WeekLayout>
-          {weekDays.map((day, index) => (
-            <S.Week key={index}>{day}</S.Week>
-          ))}
-        </S.WeekLayout>
-        <S.DayLayout>{generateCalendarDays()}</S.DayLayout>
-      </S.CalendarBox>
-      {selectDate && <Day day={selectDate} />}
+      {isLogin ? (
+        <>
+          <CalendarHeader
+            currentDate={currentDate}
+            prevMonth={prevMonth}
+            nextMonth={nextMonth}
+          />
+          <S.CalendarBox>
+            <S.WeekLayout>
+              {weekDays.map((day, index) => (
+                <S.Week key={index}>{day}</S.Week>
+              ))}
+            </S.WeekLayout>
+            <S.DayLayout>{generateCalendarDays()}</S.DayLayout>
+          </S.CalendarBox>
+          {selectDate && <Day day={selectDate} {...policies} {...user} />}
+        </>
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '50px',
+          }}
+        >
+          로그인이 필요한 서비스입니다
+        </div>
+      )}
     </S.Layout>
   );
 };
