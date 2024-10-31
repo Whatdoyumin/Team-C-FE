@@ -4,9 +4,19 @@ import img1 from '../../images/policyImg1.svg';
 import img2 from '../../images/policyImg2.svg';
 import img3 from '../../images/policyImg3.svg';
 import img4 from '../../images/policyImg4.svg';
+import { format } from 'date-fns';
 
-const PolicyCard = ({ cardId }) => {
-  const [isClicked, setIsClicked] = useState(false);
+const PolicyCard = (props) => {
+  const { bizId, endDate, policyTitle, startDate, isLogin, user } = props;
+
+  const bookmarkList = isLogin ? user.bookmarked : [];
+
+  const bookmarkCheck = (bizId) => {
+    return bookmarkList.includes(bizId);
+  };
+
+  const [isClicked, setIsClicked] = useState(bookmarkCheck(bizId));
+
   const handleBookmarkClick = () => {
     setIsClicked(!isClicked);
   };
@@ -15,25 +25,29 @@ const PolicyCard = ({ cardId }) => {
   const [randomIndex, setRandomIndex] = useState(null);
 
   useEffect(() => {
-    const storedIndex = localStorage.getItem(`randomImageIndex_${cardId}`);
+    const storedIndex = localStorage.getItem(`randomImageIndex_${bizId}`);
     if (storedIndex) {
       setRandomIndex(parseInt(storedIndex, 10));
     } else {
       const newIndex = Math.floor(Math.random() * ImagesArr.length);
       setRandomIndex(newIndex);
-      localStorage.setItem(`randomImageIndex_${cardId}`, newIndex);
+      localStorage.setItem(`randomImageIndex_${bizId}`, newIndex);
     }
-  }, [cardId]);
+  }, [bizId]);
 
   const RandomImage = randomIndex !== null ? ImagesArr[randomIndex] : null;
 
+  const formatDate = (dateString) => {
+    return format(new Date(dateString), 'yyyy년 M월 d일');
+  };
+
   return (
     <S.Container>
-      <S.Card to="/policy/1">
+      <S.Card to={`/policy/${bizId}`}>
         <S.Texts>
-          <S.Title>청년문화예술패스</S.Title>
+          <S.Title>{policyTitle}</S.Title>
           <S.Content>
-            2024년 10월 20일 <br />~ 2024년 11월 25일
+            {formatDate(startDate)} <br />~ {formatDate(endDate)}
           </S.Content>
         </S.Texts>
         <S.Img>

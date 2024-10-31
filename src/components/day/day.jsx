@@ -3,16 +3,32 @@ import { format } from 'date-fns';
 import Content from '../content/content';
 
 const Day = (props) => {
-  const { day } = props;
-  // 컨텐츠 불러와서 map 돌리고 없으면 뭐 보여주나?
+  const { day, checked, ...policies } = props;
+  console.log(checked);
+  const policiesArray = Object.values(policies);
+
+  function findSameDate() {
+    return policiesArray.filter(
+      (policy) => policy.startDate === day || policy.endDate === day
+    );
+  }
+
+  const sameDates = findSameDate();
+
   return (
     <S.Container>
       <S.Date>{format(day, 'd')}일</S.Date>
       <S.Contents>
-        <Content />
-        <Content />
-        <Content />
-        <Content />
+        {sameDates.map((sameDatePolicy) => {
+          const isChecked = checked.includes(sameDatePolicy.bizId);
+          return (
+            <Content
+              key={sameDatePolicy.bizId}
+              {...sameDatePolicy}
+              checked={isChecked}
+            />
+          );
+        })}
       </S.Contents>
     </S.Container>
   );

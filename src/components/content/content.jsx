@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import * as S from './content.style';
-const Content = () => {
-  const [isChecked, setIsChecked] = useState(false);
+const Content = (props) => {
+  const { bizId, policyTitle, checked } = props;
+  const [isCheck, setIsChecked] = useState(checked);
 
   const handleClick = () => {
-    setIsChecked(!isChecked);
+    setIsChecked(!isCheck);
   };
 
   return (
     <S.Container>
-      <S.Button onClick={handleClick} checked={isChecked}>
-        {isChecked && <S.CheckImg />}
+      <S.Button onClick={handleClick} checked={isCheck}>
+        {isCheck && <S.CheckImg />}
       </S.Button>
-      <S.Policy to="/policy/1">
-        <S.Title>청년문화예술패스</S.Title>
+      <S.Policy to={`/policy/${bizId}`}>
+        <S.Title>{policyTitle}</S.Title>
         <S.StyledIcon />
       </S.Policy>
     </S.Container>
