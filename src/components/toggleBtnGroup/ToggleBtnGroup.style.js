@@ -1,24 +1,29 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-const Ul = styled.ul`
-  width: 100%;
+const Container = styled.div`
   display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 24px;
 `;
 
-const Li = styled.li`
+const Section = styled.section`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const Ul = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
   list-style-type: none;
 `;
 
-const ToggleBtn = styled.input`
-  padding: 10px 12px;
-  border: none;
-  background-color: ${(props) =>
-    props.$isSelected ? 'var(--color-blue-700)' : 'var(--color-gray-100)'};
-  color: ${(props) => (props.$isSelected ? 'white' : 'var(--color-gray-600)')};
-  font-size: 12px;
-  border-radius: 20px;
-  white-space: nowrap;
+const Li = styled.li`
+  flex: 0 1 auto;
 `;
-export { Ul, Li, ToggleBtn };
+
+export { Container, Ul, Li, Section };
