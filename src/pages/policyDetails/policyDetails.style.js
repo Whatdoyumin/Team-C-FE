@@ -77,7 +77,7 @@ const Line = styled.div`
 `;
 const Line2 = styled.div`
   border-right: 1px solid var(--color-gray-300);
-  height: 550px;
+  height: 90%;
   display: flex;
   z-index: 1;
   position: absolute;
@@ -101,7 +101,7 @@ const Data = styled.div`
   height: 40px;
   font-size: 15px;
   font-weight: 600;
-  margin-left: 10px;
+  margin-left: 18px;
 `;
 export {
   Container,

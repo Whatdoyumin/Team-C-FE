@@ -53,12 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/community',
         element: <Community />,
-        children: [
-          {
-            path: ':postId',
-            element: <PostDetails />,
-          },
-        ],
+      },
+      {
+        path: '/community/:postId',
+        element: <PostDetails />,
       },
       {
         path: '/calendar',
