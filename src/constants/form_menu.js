@@ -30,24 +30,28 @@ const FORM_MENU = [
     title: '학력',
     options: EDUCATION,
     additional: null,
+    maxSelections: 1,
   },
   {
     id: 2,
     title: '분야',
     options: FIELD,
-    additional: null,
+    additional: '(최대 2개 선택 가능)',
+    maxSelections: 2,
   },
   {
     id: 3,
     title: '지역',
     options: REGION,
-    additional: null,
+    additional: '(최대 2개 선택 가능)',
+    maxSelections: 2,
   },
   {
     id: 4,
     title: '관심있는 키워드',
     options: INTERESTS,
-    additional: '(중복 선택 가능)',
+    additional: '(최대 4개 선택 가능)',
+    maxSelections: 4,
   },
 ];
 
