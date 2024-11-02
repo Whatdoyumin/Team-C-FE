@@ -29,21 +29,25 @@ const FORM_MENU = [
     id: 1,
     title: '학력',
     options: EDUCATION,
+    additional: null,
   },
   {
     id: 2,
     title: '분야',
     options: FIELD,
+    additional: null,
   },
   {
     id: 3,
     title: '지역',
     options: REGION,
+    additional: null,
   },
   {
     id: 4,
     title: '관심있는 키워드',
     options: INTERESTS,
+    additional: '(중복 선택 가능)',
   },
 ];
 
