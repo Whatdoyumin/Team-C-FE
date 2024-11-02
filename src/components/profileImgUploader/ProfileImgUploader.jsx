@@ -2,7 +2,7 @@ import * as S from './ProfileImgUploader.style';
 import { useState, useRef } from 'react';
 import { CiImageOn } from 'react-icons/ci';
 
-function ProfileImgUploader() {
+function ProfileImgUploader({ onProfileChange }) {
   const [profileImg, setProfileImg] = useState(null);
   const profileImgFileInput = useRef(null);
 
@@ -14,6 +14,7 @@ function ProfileImgUploader() {
       reader.onload = () => {
         if (reader.readyState === 2) {
           setProfileImg(reader.result);
+          onProfileChange(reader.result);
         }
       };
       reader.readAsDataURL(file);
