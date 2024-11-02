@@ -6,6 +6,7 @@ import { validateUser } from '../../utils/validate';
 import { ProfileImgUploader } from '../profileImgUploader/ProfileImgUploader';
 import { InputField } from '../inputField/InputField';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SettingForm({ title }) {
   const initialValue = {
@@ -27,11 +28,50 @@ function SettingForm({ title }) {
     formMenu: FORM_MENU,
   });
 
+  const navigate = useNavigate();
+  const [profileImg, setProfileImg] = useState(null);
 
+  const handleToggleChange = (toggles) => {
+    setToggleSelections(toggles);
+  };
+
+  const handleProfileChange = (img) => {
+    setProfileImg(img);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const selectedValues = {
+      학력: [],
+      분야: [],
+      지역: [],
+      '관심있는 키워드': [],
+    };
+
+    FORM_MENU.forEach((item, menuIdx) => {
+      toggles[menuIdx].forEach((isSelected, optionIdx) => {
+        if (isSelected) {
+          selectedValues[item.title].push(item.options[optionIdx]);
+        }
+      });
+    });
+
+    const profileData = {
+      user_token: '123',
+      user_img: profileImg,
+      nickName: values.nickName,
+      age: values.age,
+      selectedValues: selectedValues,
+    };
+
+    localStorage.setItem('profileData', JSON.stringify(profileData));
+
+    navigate('/home');
   };
 
   return (
-    <S.Form>
+    <S.Form onSubmit={handleSubmit}>
       <S.FormTitle>{title}</S.FormTitle>
       <ProfileImgUploader onProfileChange={handleProfileChange} />
       <S.Section>
