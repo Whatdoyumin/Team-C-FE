@@ -2,6 +2,9 @@ import * as S from './home.style';
 import PolicyList from '../../components/policyList/policyList';
 import { useState } from 'react';
 import Banner from '../../components/banner/banner';
+import userInfo from '../../moks/userData.json';
+const user = userInfo[0];
+
 const Home = () => {
   const [isLogin, setIsLogin] = useState(false);
   return (
@@ -9,11 +12,16 @@ const Home = () => {
       <Banner></Banner>
       <S.PolicyContainer>
         {isLogin ? (
-          <S.Title>✨ OO님을 위한 추천정책</S.Title>
+          <>
+            <S.Title>✨ {user.nickName}님을 위한 추천정책</S.Title>
+            <PolicyList isLogin={isLogin} {...user}></PolicyList>
+          </>
         ) : (
-          <S.Title>🚨 마감이 임박한 정책</S.Title>
+          <>
+            <S.Title>🚨 랜덤 정책 추천</S.Title>
+            <PolicyList isLogin={isLogin}></PolicyList>
+          </>
         )}
-        <PolicyList></PolicyList>
       </S.PolicyContainer>
     </S.Container>
   );
