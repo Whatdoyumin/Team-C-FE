@@ -2,47 +2,18 @@ import * as S from './SettingForm.style';
 import { FormSection } from '../formSection/FormSection';
 import { FORM_MENU } from '../../constants/form_menu';
 import { ToggleBtnGroup } from '../toggleBtnGroup/ToggleBtnGroup';
-import { useState, useRef } from 'react';
-import { CiImageOn } from 'react-icons/ci';
+import useForm from '../../hooks/useForm';
+import { validateUser } from '../../utils/validate';
+import { ProfileImgUploader } from '../profileImgUploader/ProfileImgUploader';
 
 function SettingForm({ title }) {
-  const [profileImg, setProfileImg] = useState(null);
-  const profileImgFileInput = useRef(null);
 
-  const handleProfileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setProfileImg(reader.result);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
   };
 
   return (
     <S.Form>
       <S.FormTitle>{title}</S.FormTitle>
-      <S.ProfileImg onClick={() => profileImgFileInput.current.click()}>
-        {!profileImg ? (
-          <CiImageOn />
-        ) : (
-          <img
-            src={profileImg}
-            alt="프로필 이미지"
-            onClick={() => profileImgFileInput.current.click()}
-          />
-        )}
-        <S.FileInput
-          type="file"
-          accept="image/*"
-          ref={profileImgFileInput}
-          onChange={handleProfileChange}
-        />
-      </S.ProfileImg>
-
+      <ProfileImgUploader />
       <S.Section>
         <FormSection title={'닉네임'}>
           <S.Input
