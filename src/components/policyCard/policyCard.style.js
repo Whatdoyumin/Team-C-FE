@@ -50,8 +50,9 @@ const Texts = styled.div`
   height: 100%;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
   margin-left: 10px;
+  margin-top: 15px;
 `;
 
 const Title = styled.div`
@@ -59,6 +60,7 @@ const Title = styled.div`
   font-size: 26px;
   color: var(--color-blue-700);
   font-weight: bold;
+  word-break: keep-all;
 `;
 
 const Content = styled.div`
