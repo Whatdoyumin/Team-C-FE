@@ -1,10 +1,10 @@
 import * as S from './SettingForm.style';
-import { FormSection } from '../formSection/FormSection';
 import { FORM_MENU } from '../../constants/form_menu';
 import { ToggleBtnGroup } from '../toggleBtnGroup/ToggleBtnGroup';
 import useForm from '../../hooks/useForm';
 import { validateUser } from '../../utils/validate';
 import { ProfileImgUploader } from '../profileImgUploader/ProfileImgUploader';
+import { InputField } from '../inputField/InputField';
 
 function SettingForm({ title }) {
 
@@ -13,28 +13,28 @@ function SettingForm({ title }) {
   return (
     <S.Form>
       <S.FormTitle>{title}</S.FormTitle>
-      <ProfileImgUploader />
+      <ProfileImgUploader onProfileChange={handleProfileChange} />
       <S.Section>
-        <FormSection title={'닉네임'}>
-          <S.Input
-            type="name"
-            placeholder="특수문자 없이 6자 이내로 작성해주세요."
-          />
-        </FormSection>
+        <InputField
+          label="닉네임"
+          type="text"
+          placeholder="특수문자 없이 6자 이내로 작성해주세요."
+          {...getTestInputProps('nickName')}
+          error={touched.nickName && errors.nickName}
+        />
 
-        <FormSection title={'나이'}>
-          <S.Input type="age" placeholder="만 나이로 입력해주세요." />
-        </FormSection>
+        <InputField
+          label="나이"
+          type="number"
+          placeholder="만 나이 숫자만 입력해주세요."
+          {...getTestInputProps('age')}
+          error={touched.age && errors.age}
+        />
 
-        {FORM_MENU.map((item, _) => (
-          <FormSection
-            key={item.id}
-            title={item.title}
-            additional={item.additional}
-          >
-            <ToggleBtnGroup options={item.options} />
-          </FormSection>
-        ))}
+        <ToggleBtnGroup
+          formMenu={FORM_MENU}
+          onToggleChange={handleToggleChange}
+        />
       </S.Section>
 
       <S.SubmitBtn type="submit">회원가입 하기</S.SubmitBtn>
