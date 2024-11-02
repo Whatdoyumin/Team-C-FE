@@ -4,7 +4,7 @@ const Section = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 `;
 
 const SectionTitle = styled.div`
@@ -21,4 +21,11 @@ const Asterisk = styled.p`
   color: var(--color-red-700);
 `;
 
-export { Section, SectionTitle, Title, Asterisk };
+const Additional = styled.p`
+  font-size: 10px;
+  color: var(--color-gray-400);
+  padding-top: 2px;
+  margin-left: 10px;
+`;
+
+export { Section, SectionTitle, Title, Asterisk, Additional };
