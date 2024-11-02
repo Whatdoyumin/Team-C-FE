@@ -29,9 +29,10 @@ const Title = styled.div`
     rgba(255, 255, 255, 0.7)
   );
   backdrop-filter: blur(4px);
-  color: #53565d;
+  color: var(--color-gray-800);
   font-weight: bold;
   z-index: 3;
+  margin-bottom: 10px;
 `;
 
 export { Container, PolicyContainer, Title };

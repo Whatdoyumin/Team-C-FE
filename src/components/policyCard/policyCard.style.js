@@ -30,7 +30,7 @@ const BookmarkIcon = styled(BsBookmarkDash)`
   left: 10px;
   cursor: pointer;
   z-index: 1;
-  color: var(--color-blue-main);
+  color: var(--color-blue-700);
   width: 23px;
   height: 20px;
 `;
@@ -40,7 +40,7 @@ const BookmarkFillIcon = styled(BsBookmarkFill)`
   left: 10px;
   cursor: pointer;
   z-index: 1;
-  color: var(--color-blue-main);
+  color: var(--color-blue-700);
   width: 23px;
   height: 20px;
 `;
@@ -57,7 +57,7 @@ const Texts = styled.div`
 const Title = styled.div`
   display: flex;
   font-size: 26px;
-  color: var(--color-blue-main);
+  color: var(--color-blue-700);
   font-weight: bold;
 `;
 

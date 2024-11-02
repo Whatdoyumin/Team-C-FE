@@ -1,9 +1,9 @@
 import * as S from './policyCard.style';
 import { useState, useEffect } from 'react';
-import img1 from '../../images/문화예술패스.svg';
-import img2 from '../../images/전세대출.svg';
-import img3 from '../../images/청년마음상담.svg';
-import img4 from '../../images/청년희망계좌.svg';
+import img1 from '../../images/policyImg1.svg';
+import img2 from '../../images/policyImg2.svg';
+import img3 from '../../images/policyImg3.svg';
+import img4 from '../../images/policyImg4.svg';
 
 const PolicyCard = ({ cardId }) => {
   const [isClicked, setIsClicked] = useState(false);

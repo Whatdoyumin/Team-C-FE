@@ -9,7 +9,7 @@ const Content = () => {
 
   return (
     <S.Container>
-      <S.Button onClick={handleClick} isChecked={isChecked}>
+      <S.Button onClick={handleClick} checked={isChecked}>
         {isChecked && <S.CheckImg />}
       </S.Button>
       <S.Policy to="/policy/1">
