@@ -6,7 +6,7 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 22px;
-  padding: 0 6px 0 12px;
+  padding: 0 6px;
 `;
 
 const FormTitle = styled.p`
@@ -21,23 +21,6 @@ const Section = styled.div`
   flex-direction: column;
   gap: 24px;
   padding: 0 12px;
-`;
-
-const Input = styled.input`
-  color: var(--color-gray-700);
-  height: 20px;
-  font-size: 12px;
-  border: none;
-  border-bottom: 1px solid var(--color-gray-200);
-  padding: 0 5px 5px;
-
-  &:focus {
-    outline: none;
-  }
-
-  &::placeholder {
-    color: var(--color-gray-500);
-  }
 `;
 
 const SubmitBtn = styled.button`
@@ -55,9 +38,4 @@ const SubmitBtn = styled.button`
   }
 `;
 
-const ErrorMsg = styled.p`
-  color: red;
-  font-size: 12px;
-`;
-
-export { Form, FormTitle, Section, Input, ErrorMsg, SubmitBtn };
+export { Form, FormTitle, Section, SubmitBtn };
