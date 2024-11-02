@@ -1,9 +1,16 @@
 import * as S from './Community.style';
 import { BsPencil } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 import PostList from '../../components/postList/PostList';
 
 function Community() {
+  const navigate = useNavigate();
+
+  const handleWriteButtonClick = () => {
+    navigate('/postwrite');
+  };
+
   return (
     <S.Container>
       <S.SearchContainer>
@@ -12,7 +19,7 @@ function Community() {
       </S.SearchContainer>
       <PostList />
       <S.WriteButton>
-        <button>
+        <button onClick={handleWriteButtonClick}>
           <BsPencil />
           글쓰기
         </button>
