@@ -2,24 +2,30 @@ import * as S from './ToggleBtnGroup.style';
 import { useState } from 'react';
 
 function ToggleBtnGroup({ options }) {
-  const [isClicked, setIsClicked] = useState(false);
+  const [toggles, setToggles] = useState(Array(options.length).fill(false));
 
-  const handleClickOption = () => {
-    setIsClicked((isClicked) => !isClicked);
+  const handleToggle = (idx) => {
+    setToggles((prevToggles) => {
+      const newToggles = [...prevToggles];
+      newToggles[idx] = !newToggles[idx];
+
+      return newToggles;
+    });
   };
 
   return (
-    <S.Container>
+    <S.Ul>
       {options.map((option, idx) => (
-        <S.ToggleBtn
-          key={idx}
-          onClick={handleClickOption}
-          isSelected={isClicked}
-        >
-          {option}
-        </S.ToggleBtn>
+        <S.Li key={idx}>
+          <S.ToggleBtn
+            type="button"
+            onClick={() => handleToggle(idx)}
+            $isSelected={toggles[idx]}
+            value={option}
+          />
+        </S.Li>
       ))}
-    </S.Container>
+    </S.Ul>
   );
 }
 
