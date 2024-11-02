@@ -36,7 +36,7 @@ const PostItem = styled.div`
 
   p {
     font-size: 12px;
-    color: #888;
+    color: var(--color-gray-700);
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -49,7 +49,7 @@ const PostItem = styled.div`
     display: flex;
     align-items: center;
     font-size: 13px;
-    color: var(--color-blue-main);
+    color: var(--color-blue-600);
   }
 `;
 
