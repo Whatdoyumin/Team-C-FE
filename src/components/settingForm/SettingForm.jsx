@@ -5,8 +5,28 @@ import useForm from '../../hooks/useForm';
 import { validateUser } from '../../utils/validate';
 import { ProfileImgUploader } from '../profileImgUploader/ProfileImgUploader';
 import { InputField } from '../inputField/InputField';
+import { useState } from 'react';
 
 function SettingForm({ title }) {
+  const initialValue = {
+    nickName: '',
+    age: '',
+  };
+
+  const {
+    values,
+    errors,
+    touched,
+    getTestInputProps,
+    isFormValid,
+    setToggleSelections,
+    toggles,
+  } = useForm({
+    initialValue,
+    validate: validateUser,
+    formMenu: FORM_MENU,
+  });
+
 
   };
 
@@ -37,7 +57,9 @@ function SettingForm({ title }) {
         />
       </S.Section>
 
-      <S.SubmitBtn type="submit">회원가입 하기</S.SubmitBtn>
+      <S.SubmitBtn type="submit" disabled={!isFormValid}>
+        회원가입 하기
+      </S.SubmitBtn>
     </S.Form>
   );
 }
