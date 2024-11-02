@@ -1,20 +1,24 @@
 import { styled } from 'styled-components';
 
-const Container = styled.div`
+const Ul = styled.ul`
   width: 100%;
   display: flex;
   gap: 6px;
-  overflow: visible;
+  flex-wrap: wrap;
 `;
 
-const ToggleBtn = styled.button`
+const Li = styled.li`
+  list-style-type: none;
+`;
+
+const ToggleBtn = styled.input`
   padding: 10px 12px;
   border: none;
   background-color: ${(props) =>
-    props.isSelected ? 'var(--color-blue-700)' : 'var(--color-gray-100)'};
-  color: ${(props) => (props.isSelected ? 'white' : 'var(--color-gray-600)')};
+    props.$isSelected ? 'var(--color-blue-700)' : 'var(--color-gray-100)'};
+  color: ${(props) => (props.$isSelected ? 'white' : 'var(--color-gray-600)')};
   font-size: 12px;
   border-radius: 20px;
   white-space: nowrap;
 `;
-export { Container, ToggleBtn };
+export { Ul, Li, ToggleBtn };
