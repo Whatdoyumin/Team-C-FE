@@ -1,8 +1,8 @@
 import * as S from './PostList.style';
-import posts from '../../mockData/posts';
+// import posts from '../../mockData/posts';
 import { useNavigate } from 'react-router-dom';
 
-const PostList = () => {
+const PostList = ({ posts }) => {
   const navigate = useNavigate();
 
   const handlePostClick = (postId) => {

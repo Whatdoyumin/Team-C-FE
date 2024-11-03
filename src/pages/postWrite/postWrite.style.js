@@ -27,4 +27,30 @@ const WriteContainer = styled.div`
   }
 `;
 
-export { WriteContainer };
+const UploadButton = styled.div`
+  position: fixed;
+  left: 50%;
+  bottom: 14%;
+  transform: translate(-50%, 50%);
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    width: 90px;
+    height: 35px;
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #ddd;
+    color: var(--color-gray-main);
+
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+`;
+
+export { WriteContainer, UploadButton };

@@ -36,14 +36,14 @@ const AuthorInfo = styled.div`
 `;
 
 const PostContent = styled.div`
-  margin-bottom: 7px;
+  margin-bottom: 10px;
   h3 {
-    font-size: 15px;
+    font-size: 17px;
     margin-bottom: 10px;
   }
 
   p {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.6;
     color: var(--color-gray-700);
     text-align: justify;
@@ -100,6 +100,7 @@ const Comment = styled.div`
 
   p {
     margin-top: 12px;
+    padding-right: 3px;
     font-size: 12px;
     color: var(--color-gray-800);
   }
