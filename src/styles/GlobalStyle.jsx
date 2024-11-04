@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     --color-red-800: #F05353;
     --color-red-700: #FF0000;
 
-    --color-kakao-yellow: #FFCD00;
+    --color-kakao-yellow: #FEE500;
 
     /* size */
     --size-max-width: 393px;
@@ -52,6 +52,7 @@ const GlobalStyle = createGlobalStyle`
       height: 100vh;
       padding: calc(var(--size-header) + 0.5rem) var(--size-side-gap) calc(var(--size-navbar) + 0.5rem);
       position: relative;
+      overflow: hidden;
     }
 
     h1, h2, span, div {
