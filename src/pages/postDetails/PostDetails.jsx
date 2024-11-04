@@ -1,17 +1,19 @@
 import { useParams } from 'react-router-dom';
 import * as S from './PostDetails.style';
-import posts from '../../mockData/posts';
+//import posts from '../../mockData/posts';
 import { useState } from 'react';
 import { LuSendHorizonal } from 'react-icons/lu';
+import { usePost } from '../../context/PostContext';
 
 function PostDetails() {
   const { postId } = useParams();
+  const { posts } = usePost();
   const post = posts.find((post) => post.id === parseInt(postId));
   // console.log(postId);
 
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
-  const [commentCount, setCommmetCount] = useState(0);
+  const [commentCount, setCommmetCount] = useState(post?.commentCount || 0);
 
   const handleAddComment = (e) => {
     e.preventDefault();

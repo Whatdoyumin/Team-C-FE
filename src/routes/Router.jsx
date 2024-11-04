@@ -11,6 +11,7 @@ import {
   PostDetails,
   Calendar,
   NotFound,
+  PostWrite,
 } from '../pages/index';
 
 const router = createBrowserRouter([
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: '/calendar',
         element: <Calendar />,
+      },
+      {
+        path: '/postwrite',
+        element: <PostWrite />,
       },
     ],
   },

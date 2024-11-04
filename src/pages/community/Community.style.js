@@ -42,7 +42,7 @@ const SearchIcon = styled(IoSearch)`
 const WriteButton = styled.div`
   position: fixed;
   left: 50%;
-  bottom: 13.5%;
+  bottom: 14%;
   transform: translate(-50%, 50%);
 
   button {
