@@ -77,7 +77,7 @@ const Line = styled.div`
 `;
 const Line2 = styled.div`
   border-right: 1px solid var(--color-gray-300);
-  height: 90%;
+  height: 600px;
   display: flex;
   z-index: 1;
   position: absolute;
