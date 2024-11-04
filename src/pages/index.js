@@ -8,6 +8,7 @@ import Community from './community/Community';
 import PostDetails from './postDetails/PostDetails';
 import Calendar from './calendar/Calendar';
 import NotFound from './NotFound';
+import PostWrite from './postWrite/postWrite';
 
 export {
   Landing,
@@ -20,4 +21,5 @@ export {
   PostDetails,
   Calendar,
   NotFound,
+  PostWrite,
 };

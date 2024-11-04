@@ -31,21 +31,21 @@ const AuthorInfo = styled.div`
 
   h6 {
     font-size: 11px;
-    color: #61646b;
+    color: var(--color-gray-800);
   }
 `;
 
 const PostContent = styled.div`
-  margin-bottom: 7px;
+  margin-bottom: 10px;
   h3 {
-    font-size: 15px;
+    font-size: 17px;
     margin-bottom: 10px;
   }
 
   p {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.6;
-    color: #61646b;
+    color: var(--color-gray-700);
     text-align: justify;
   }
 `;
@@ -54,7 +54,7 @@ const CommentCount = styled.div`
   display: flex;
   align-items: center;
   font-size: 13px;
-  color: var(--color-blue-main);
+  color: var(--color-blue-600);
 `;
 
 const CommentIcon = styled(FaCommentDots)`
@@ -64,7 +64,7 @@ const CommentIcon = styled(FaCommentDots)`
 
 const Divider = styled.hr`
   margin: 15px 0;
-  background: #c5c5c5;
+  background: var(--color-gray-300);
   height: 1px;
   border: 0;
 `;
@@ -100,8 +100,9 @@ const Comment = styled.div`
 
   p {
     margin-top: 12px;
+    padding-right: 3px;
     font-size: 12px;
-    color: #61646b;
+    color: var(--color-gray-800);
   }
 `;
 
@@ -139,7 +140,7 @@ const CommentInput = styled.div`
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 20px;
-    color: #84858c;
+    color: var(--color-gray-600);
   }
 `;
 
