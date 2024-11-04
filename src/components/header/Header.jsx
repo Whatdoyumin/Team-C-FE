@@ -10,10 +10,11 @@ function Header() {
   const [userImg, setUserImg] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('user_token');
-    const user_img = localStorage.getItem('user_img');
+    const profileDataString = localStorage.getItem('profileData');
+    const profileData = JSON.parse(profileDataString);
+    const user_img = profileData.user_img;
 
-    if (token && user_img) {
+    if (profileDataString && user_img) {
       setUserImg(user_img);
     }
   }, []);
