@@ -35,8 +35,8 @@ const Nav = styled.nav`
 `;
 
 const Profile = styled.div`
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   position: absolute;
   right: 10px;
 `;
@@ -47,18 +47,26 @@ const UserImg = styled.img`
   overflow: hidden;
   object-fit: cover;
   border: 1px solid var(--color-gray-400);
-  border-radius: 14px;
+  border-radius: 15px;
 `;
 
 const Logo = styled(Link)`
   font-size: 28px;
   color: var(--color-blue-700);
   font-weight: 700;
-  cursor: pointer;
   text-decoration: none;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 `;
 
-export { Header, Nav, Logo, Profile, UserImg };
+const Title = styled.p`
+  font-size: 28px;
+  color: var(--color-gray-700);
+  font-weight: 700;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+export { Header, Nav, Logo, Title, Profile, UserImg };
