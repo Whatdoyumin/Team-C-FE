@@ -9,6 +9,7 @@ import PostDetails from './postDetails/PostDetails';
 import Calendar from './calendar/Calendar';
 import NotFound from './NotFound';
 import PostWrite from './postWrite/postWrite';
+import EditProfile from './editProfile/EditProfile';
 
 export {
   Landing,
@@ -22,4 +23,5 @@ export {
   Calendar,
   NotFound,
   PostWrite,
+  EditProfile,
 };
