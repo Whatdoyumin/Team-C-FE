@@ -38,7 +38,7 @@ const MyProfile = () => {
       <h2>내 프로필</h2>
       <S.Box>
         <S.InfoContainer>
-          <S.ProfileImg src={user_img} />
+          <S.ProfileImg src={userImg} />
           <S.NickName>{nickName}</S.NickName>
           <S.AgeEducation>
             {age}세, {education}
