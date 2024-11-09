@@ -3,6 +3,8 @@ import { RiKakaoTalkFill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 
 function Landing() {
+  const loginUrl = `${import.meta.env.VITE_KAKAO_URL}?response_type=code&client_id=${import.meta.env.VITE_KAKAO_REST_API_KEY}&redirect_uri=${import.meta.env.VITE_KAKAO_REDIRECT_URI}`;
+
   return (
     <S.Container>
       <S.LogoContainer>
@@ -11,7 +13,7 @@ function Landing() {
       </S.LogoContainer>
       <S.LoginContainer>
         <S.LoginTitle>간편 로그인</S.LoginTitle>
-        <S.KakaoLoginButton to="/settings">
+        <S.KakaoLoginButton href={loginUrl}>
           <RiKakaoTalkFill size={'1.5rem'} />
           카카오 로그인
         </S.KakaoLoginButton>
