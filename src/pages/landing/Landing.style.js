@@ -64,7 +64,7 @@ const LoginTitle = styled.div`
   }
 `;
 
-const KakaoLoginButton = styled(Link)`
+const KakaoLoginButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
