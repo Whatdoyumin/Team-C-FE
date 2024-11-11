@@ -8,7 +8,6 @@ const BottomNav = styled.nav`
   position: fixed;
   bottom: 0;
   margin-left: calc(-1 * var(--size-side-gap));
-  background-color: white;
   box-shadow: 0 -5px 10px -5px rgba(0, 0, 0, 0.1);
 `;
 
