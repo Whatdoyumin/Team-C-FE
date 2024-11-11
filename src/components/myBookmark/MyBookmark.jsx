@@ -1,6 +1,6 @@
 import * as S from './MyBookmark.style';
-import userInfo from '../../moks/userData.json';
-import policyDatas from '../../moks/policyData.json';
+import userInfo from '../../mocks/userData.json';
+import policyDatas from '../../mocks/policyData.json';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

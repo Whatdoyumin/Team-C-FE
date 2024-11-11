@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as S from './policyDetails.style';
-import policyDatas from '../../moks/policyData.json';
+import policyDatas from '../../mocks/policyData.json';
 import { useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 
