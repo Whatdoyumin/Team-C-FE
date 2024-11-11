@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  gap: 22px;
 `;
 
 export { Container };
