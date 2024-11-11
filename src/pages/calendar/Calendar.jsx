@@ -37,7 +37,7 @@ const Calendar = () => {
   };
 
   const policies = isLogin ? getPolicyInfo(getBookmarkPolicyId()) : [];
-  console.log(policies);
+  // console.log(policies);
   const getMonthDates = () => {
     const monthStart = startOfMonth(currentDate);
     const monthEnd = endOfMonth(monthStart);
