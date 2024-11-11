@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
 import * as S from './PostDetails.style';
-//import posts from '../../mockData/posts';
 import { useState } from 'react';
 import { LuSendHorizonal } from 'react-icons/lu';
 import { usePost } from '../../context/PostContext';
+import CommentList from '../../components/comment/CommentList';
+import CommentInput from '../../components/comment/CommentInput';
 
 function PostDetails() {
   const { postId } = useParams();
@@ -43,30 +44,14 @@ function PostDetails() {
       </S.CommentCount>
       <S.Divider />
 
-      <S.CommentList>
-        {comments.map((comment, index) => (
-          <S.CommentBox key={index}>
-            <img src={'https://bit.ly/4fhflX4'} alt={'사진'} />
-            <S.Comment>
-              <h6>유니</h6>
-              <p>{comment}</p>
-            </S.Comment>
-          </S.CommentBox>
-        ))}
-      </S.CommentList>
+      <CommentList comments={comments} />
 
       <form onSubmit={handleAddComment}>
-        <S.CommentInputBox>
-          <S.CommentInput>
-            <input
-              type="text"
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              placeholder="댓글을 입력하세요"
-            />
-            <LuSendHorizonal onClick={handleAddComment} />
-          </S.CommentInput>
-        </S.CommentInputBox>
+        <CommentInput
+          newComment={newComment}
+          setNewComment={setNewComment}
+          handleAddComment={handleAddComment}
+        />
       </form>
     </S.Container>
   );
