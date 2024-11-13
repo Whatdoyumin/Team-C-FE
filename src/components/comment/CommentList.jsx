@@ -1,4 +1,5 @@
-import * as S from '../../pages/postDetails/PostDetails.style';
+import * as S from './CommentList.style';
+import EditMenu from '../editMenu/EditMenu';
 
 function CommentList({ comments }) {
   return (
@@ -7,7 +8,10 @@ function CommentList({ comments }) {
         <S.CommentBox key={index}>
           <img src={'https://bit.ly/4fhflX4'} alt={'사진'} />
           <S.Comment>
-            <h6>유니</h6>
+            <S.EditBox>
+              <h6>유니</h6>
+              <EditMenu />
+            </S.EditBox>
             <p>{comment}</p>
           </S.Comment>
         </S.CommentBox>

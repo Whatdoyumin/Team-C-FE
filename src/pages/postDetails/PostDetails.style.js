@@ -10,6 +10,11 @@ const Container = styled.div`
   overflow-y: auto;
 `;
 
+const AuthorBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const AuthorInfo = styled.div`
   display: flex;
   align-items: center;
@@ -69,91 +74,12 @@ const Divider = styled.hr`
   border: 0;
 `;
 
-const CommentList = styled.div`
-  margin-top: 10px;
-  height: 280px;
-  overflow-y: scroll;
-`;
-
-const CommentBox = styled.div`
-  display: flex;
-  margin-bottom: 15px;
-
-  img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid #61646b;
-    margin-right: 8px;
-  }
-`;
-
-const Comment = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  h6 {
-    margin-top: 10px;
-    font-size: 15px;
-    font-weight: 900;
-  }
-
-  p {
-    margin-top: 12px;
-    padding-right: 3px;
-    font-size: 12px;
-    color: var(--color-gray-800);
-  }
-`;
-
-const CommentInputBox = styled.div`
-  display: flex;
-  margin: 10px 0;
-  position: fixed;
-  left: 50%;
-  bottom: 13.5%;
-  transform: translate(-50%, 50%);
-`;
-
-const CommentInput = styled.div`
-  position: relative;
-
-  input {
-    width: 350px;
-    height: 40px;
-    padding: 0 15px;
-    border: none;
-    border-radius: 20px;
-    background-color: #f1f1f1;
-    font-size: 13px;
-
-    &:focus {
-      border: 1px solid #888;
-      outline: none;
-    }
-  }
-
-  svg {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 20px;
-    color: var(--color-gray-600);
-  }
-`;
-
 export {
   Container,
   AuthorInfo,
+  AuthorBox,
   PostContent,
   CommentCount,
   CommentIcon,
   Divider,
-  CommentList,
-  CommentInputBox,
-  CommentInput,
-  CommentBox,
-  Comment,
 };

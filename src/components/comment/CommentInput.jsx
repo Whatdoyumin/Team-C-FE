@@ -1,4 +1,4 @@
-import * as S from '../../pages/postDetails/PostDetails.style';
+import * as S from './CommentInput.style';
 import { LuSendHorizonal } from 'react-icons/lu';
 
 function CommentInput({ newComment, setNewComment, handleAddComment }) {
