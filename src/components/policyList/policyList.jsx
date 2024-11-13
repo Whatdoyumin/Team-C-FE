@@ -1,8 +1,9 @@
 import * as S from './policyList.style';
 import PolicyCard from '../policyCard/policyCard';
-import useGetInfinitePolicy from '../../hooks/useGetInfinitePolicy';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { getRandomPolicyLogin } from '../../apis/policy';
 
 const policyFieldCodesLetter = {
   일자리: '023010',
@@ -11,7 +12,20 @@ const policyFieldCodesLetter = {
   '복지 / 문화': '023040',
   '참여 / 권리': '023050',
 };
-
+function useGetInfinitePolicy(interest) {
+  return useInfiniteQuery({
+    queryKey: ['categoryPolicies', interest],
+    queryFn: ({ pageParam = 1 }) => getRandomPolicyLogin(pageParam, interest),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      const lastPolicy = lastPage?.data?.emp?.[lastPage.data.emp.length - 1];
+      return lastPolicy ? allPages.length + 1 : undefined;
+    },
+    cacheTime: 10000,
+    staleTime: 10000,
+    enabled: !!interest && interest.length > 0,
+  });
+}
 const PolicyListLogin = (props) => {
   const { ...user } = props;
   let interestCode = '';
@@ -66,7 +80,7 @@ const PolicyListLogin = (props) => {
         const today = new Date();
 
         if (endDate < today) {
-          return false; // If the end date is past, return false
+          return false;
         }
         return start;
       } catch {
@@ -82,7 +96,7 @@ const PolicyListLogin = (props) => {
           return page?.data?.emp.map((policyData) => {
             const isValid = extractSubstring(policyData.rqutPrdCn);
             if (isValid === false) {
-              return null; // Skip rendering this policy card if the date is expired
+              return null;
             }
             return (
               <PolicyCard key={policyData.bizId} {...policyData} {...user} />
