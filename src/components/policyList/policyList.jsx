@@ -1,53 +1,109 @@
 import * as S from './policyList.style';
 import PolicyCard from '../policyCard/policyCard';
-import policyDatas from '../../moks/policyData.json';
+import useGetInfinitePolicy from '../../hooks/useGetInfinitePolicy';
+import { useInView } from 'react-intersection-observer';
+import { useEffect } from 'react';
 
-const PolicyList = (props) => {
-  const { isLogin, ...user } = props;
+const policyFieldCodesLetter = {
+  일자리: '023010',
+  주거: '023020',
+  교육: '023030',
+  '복지 / 문화': '023040',
+  '참여 / 권리': '023050',
+};
+
+const PolicyListLogin = (props) => {
+  const { ...user } = props;
+  let interestCode = '';
+
   const interest = user.interest;
-  const safeInterest = interest || [];
+  interestCode = interest
+    .map((interestItem) => policyFieldCodesLetter[interestItem])
+    .filter((code) => code)
+    .join(',');
 
-  const policyFieldCodes = {
-    일자리: '023010',
-    주거: '023020',
-    교육: '023030',
-    '복지 / 문화': '023040',
-    '참여 / 권리': '023050',
-  };
+  const {
+    data,
+    error,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isPending,
+  } = useGetInfinitePolicy(interestCode);
 
-  const convertInterestsToCodes = (interests) => {
-    return interests
-      .map((interest) => policyFieldCodes[interest])
-      .filter((code) => code);
-  };
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
-  const interestCodes = convertInterestsToCodes(safeInterest);
+  useEffect(() => {
+    if (inView && !isFetching && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, isFetching, hasNextPage, fetchNextPage]);
 
-  const InterestPolicy = () => {
-    return policyDatas.filter((policy) =>
-      interestCodes.includes(policy.polyRlmCd)
-    );
-  };
+  if (isPending) {
+    return <p>Loading...</p>;
+  }
 
-  const filteredPolicies = InterestPolicy();
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading policies</p>;
+
+  const policiesData = data?.pages;
+
+  function extractSubstring(text) {
+    if (!text) return true;
+    const keyword = '신청기간:';
+    const keywordIndex = text.indexOf(keyword);
+
+    if (keywordIndex !== -1) {
+      return true;
+    } else {
+      const newText = text.slice(0, 21);
+      try {
+        const [start, end] = newText.split('~', 2).map((date) => date.trim());
+        const endDate = new Date(end);
+        const today = new Date();
+
+        if (endDate < today) {
+          return false; // If the end date is past, return false
+        }
+        return start;
+      } catch {
+        return true;
+      }
+    }
+  }
 
   return (
     <S.Container>
-      {isLogin ? (
-        <S.PolicyList>
-          {filteredPolicies.map((policyData) => (
-            <PolicyCard key={policyData.bizId} {...policyData} {...user} />
-          ))}
-        </S.PolicyList>
-      ) : (
-        <S.PolicyList>
-          {policyDatas.map((policyData) => (
-            <PolicyCard key={policyData.bizId} {...policyData} />
-          ))}
-        </S.PolicyList>
-      )}
+      <S.PolicyList>
+        {policiesData?.map((page) => {
+          return page?.data?.emp.map((policyData) => {
+            const isValid = extractSubstring(policyData.rqutPrdCn);
+            if (isValid === false) {
+              return null; // Skip rendering this policy card if the date is expired
+            }
+            return (
+              <PolicyCard key={policyData.bizId} {...policyData} {...user} />
+            );
+          });
+        })}
+      </S.PolicyList>
+      <div
+        ref={ref}
+        style={{
+          height: '50px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        {isFetching && <p>Loading more...</p>}
+      </div>
     </S.Container>
   );
 };
 
-export default PolicyList;
+export default PolicyListLogin;
