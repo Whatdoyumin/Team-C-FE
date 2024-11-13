@@ -2,11 +2,11 @@ import * as S from './home.style';
 import PolicyList from '../../components/policyList/policyList';
 import { useState } from 'react';
 import Banner from '../../components/banner/banner';
-import userInfo from '../../moks/userData.json';
+import userInfo from '../../mocks/userData.json';
 const user = userInfo[0];
 
 const Home = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   return (
     <S.Container>
       <Banner></Banner>

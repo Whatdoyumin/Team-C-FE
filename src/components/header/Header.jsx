@@ -9,45 +9,63 @@ function Header() {
   const location = useLocation();
   const [userImg, setUserImg] = useState(null);
 
+  // 추후 수정 필요. 현재는 로컬스토리지 값을 가져오도록 함
   useEffect(() => {
-    const token = localStorage.getItem('user_token');
-    const user_img = localStorage.getItem('user_img');
+    const profileDataString = localStorage.getItem('profileData');
 
-    if (token && user_img) {
-      setUserImg(user_img);
+    if (profileDataString) {
+      try {
+        const { user_img } = JSON.parse(profileDataString);
+        if (user_img) {
+          setUserImg(user_img);
+        }
+      } catch (error) {
+        console.error('프로필 데이터가 존재하지 않습니다.', error);
+      }
     }
   }, []);
 
   const showBackBtn = () => {
     const backBtnPath = [
       '/my',
-      '/policy/:policyId',
+      '/policy',
       '/community',
       '/calendar',
       '/recommend',
+      '/postwrite',
     ];
 
-    return backBtnPath.some((path) => {
-      return location.pathname.startsWith(path.replace(':policyId', ''));
-    });
+    return backBtnPath.some((path) => location.pathname.startsWith(path));
   };
 
   const showLogoAndProfile = () => {
     return location.pathname === '/home';
   };
 
+  const showWriteTitle = () => {
+    return location.pathname === '/postwrite';
+  };
+
   return (
     <S.Header>
       <S.Nav>
         {showBackBtn() && <IoChevronBack onClick={() => navigate(-1)} />}
-        {showLogoAndProfile() && <S.Logo to="/home">청년돋움</S.Logo>}
-        <S.Profile onClick={() => navigate('/my')}>
-          {userImg ? (
-            <S.UserImg src={userImg} alt="사용자 프로필" />
-          ) : (
-            <LuUserCircle2 />
-          )}
-        </S.Profile>
+
+        {showLogoAndProfile() ? (
+          <S.Logo to="/home">청년돋움</S.Logo>
+        ) : showWriteTitle() ? (
+          <S.Title>글쓰기</S.Title>
+        ) : null}
+
+        {!location.pathname.startsWith('/my') && (
+          <S.Profile onClick={() => navigate('/my')}>
+            {userImg ? (
+              <S.UserImg src={userImg} alt="사용자 프로필" />
+            ) : (
+              <LuUserCircle2 />
+            )}
+          </S.Profile>
+        )}
       </S.Nav>
     </S.Header>
   );

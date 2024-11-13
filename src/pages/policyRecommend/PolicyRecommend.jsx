@@ -1,11 +1,11 @@
 import * as S from './PolicyRecommend.style';
 import PolicyList from '../../components/policyList/policyList';
 import { useState } from 'react';
-import userInfo from '../../moks/userData.json';
+import userInfo from '../../mocks/userData.json';
 const user = userInfo[0];
 console.log(user);
 function PolicyRec() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <S.Container>

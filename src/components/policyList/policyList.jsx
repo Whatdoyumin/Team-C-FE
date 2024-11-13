@@ -1,6 +1,6 @@
 import * as S from './policyList.style';
 import PolicyCard from '../policyCard/policyCard';
-import policyDatas from '../../moks/policyData.json';
+import policyDatas from '../../mocks/policyData.json';
 
 const PolicyList = (props) => {
   const { isLogin, ...user } = props;

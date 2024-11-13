@@ -11,6 +11,8 @@ import {
   PostDetails,
   Calendar,
   NotFound,
+  PostWrite,
+  EditProfile,
 } from '../pages/index';
 
 const router = createBrowserRouter([
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <Landing />,
     errorElement: <NotFound />,
+  },
+  {
+    path: '/settings',
+    element: <UserSettings />,
   },
   {
     path: '/',
@@ -31,12 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/my',
         element: <Mypage />,
-        children: [
-          {
-            path: 'settings',
-            element: <UserSettings />,
-          },
-        ],
+      },
+      {
+        path: '/my/settings',
+        element: <EditProfile />,
       },
       {
         path: '/recommend',
@@ -57,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: '/calendar',
         element: <Calendar />,
+      },
+      {
+        path: '/postwrite',
+        element: <PostWrite />,
       },
     ],
   },

@@ -10,6 +10,11 @@ const Container = styled.div`
   overflow-y: auto;
 `;
 
+const AuthorBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const AuthorInfo = styled.div`
   display: flex;
   align-items: center;
@@ -31,21 +36,21 @@ const AuthorInfo = styled.div`
 
   h6 {
     font-size: 11px;
-    color: #61646b;
+    color: var(--color-gray-800);
   }
 `;
 
 const PostContent = styled.div`
-  margin-bottom: 7px;
+  margin-bottom: 10px;
   h3 {
-    font-size: 15px;
+    font-size: 17px;
     margin-bottom: 10px;
   }
 
   p {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.6;
-    color: #61646b;
+    color: var(--color-gray-700);
     text-align: justify;
   }
 `;
@@ -54,7 +59,7 @@ const CommentCount = styled.div`
   display: flex;
   align-items: center;
   font-size: 13px;
-  color: var(--color-blue-main);
+  color: var(--color-blue-600);
 `;
 
 const CommentIcon = styled(FaCommentDots)`
@@ -64,95 +69,17 @@ const CommentIcon = styled(FaCommentDots)`
 
 const Divider = styled.hr`
   margin: 15px 0;
-  background: #c5c5c5;
+  background: var(--color-gray-300);
   height: 1px;
   border: 0;
-`;
-
-const CommentList = styled.div`
-  margin-top: 10px;
-  height: 280px;
-  overflow-y: scroll;
-`;
-
-const CommentBox = styled.div`
-  display: flex;
-  margin-bottom: 15px;
-
-  img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid #61646b;
-    margin-right: 8px;
-  }
-`;
-
-const Comment = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  h6 {
-    margin-top: 10px;
-    font-size: 15px;
-    font-weight: 900;
-  }
-
-  p {
-    margin-top: 12px;
-    font-size: 12px;
-    color: #61646b;
-  }
-`;
-
-const CommentInputBox = styled.div`
-  display: flex;
-  margin: 10px 0;
-  position: fixed;
-  left: 50%;
-  bottom: 13.5%;
-  transform: translate(-50%, 50%);
-`;
-
-const CommentInput = styled.div`
-  position: relative;
-
-  input {
-    width: 350px;
-    height: 40px;
-    padding: 0 15px;
-    border: none;
-    border-radius: 20px;
-    background-color: #f1f1f1;
-    font-size: 13px;
-
-    &:focus {
-      border: 1px solid #888;
-      outline: none;
-    }
-  }
-
-  svg {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 20px;
-    color: #84858c;
-  }
 `;
 
 export {
   Container,
   AuthorInfo,
+  AuthorBox,
   PostContent,
   CommentCount,
   CommentIcon,
   Divider,
-  CommentList,
-  CommentInputBox,
-  CommentInput,
-  CommentBox,
-  Comment,
 };
