@@ -50,12 +50,8 @@ const UserImg = styled.img`
   border-radius: 14px;
 `;
 
-const Logo = styled(Link)`
-  font-size: 28px;
-  color: var(--color-blue-700);
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
+const Logo = styled.img`
+  width: 100px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
