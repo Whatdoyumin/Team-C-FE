@@ -7,10 +7,9 @@ import img4 from '../../images/policyImg4.svg';
 import { format } from 'date-fns';
 
 const PolicyCard = (props) => {
-  const { bizId, endDate, policyTitle, startDate, isLogin, user } = props;
-
+  const { bizId, polyBizSjnm, rqutPrdCn } = props;
+  const isLogin = false;
   const bookmarkList = isLogin ? user.bookmarked : [];
-
   const bookmarkCheck = (bizId) => {
     return bookmarkList.includes(bizId);
   };
@@ -37,18 +36,43 @@ const PolicyCard = (props) => {
 
   const RandomImage = randomIndex !== null ? ImagesArr[randomIndex] : null;
 
-  const formatDate = (dateString) => {
-    return format(new Date(dateString), 'yyyy년 M월 d일');
+  const formatDateRange = (dateRange) => {
+    try {
+      const [start, end] = dateRange.split('~', 2).map((date) => date.trim());
+      return (
+        <>
+          {format(new Date(start), 'yyyy년 M월 d일')}
+          <br />~ {format(new Date(end), 'yyyy년 M월 d일')}
+        </>
+      );
+    } catch (error) {
+      return dateRange;
+    }
   };
+
+  function extractSubstring(text) {
+    if (!text) return '-';
+    const keyword = '신청기간:';
+    const keywordIndex = text.indexOf(keyword);
+
+    if (keywordIndex !== -1) {
+      const newText = text.slice(keywordIndex + 5);
+
+      return newText;
+    } else {
+      const newText = text.slice(0, 21);
+
+      return formatDateRange(newText);
+    }
+  }
+  const editDate = extractSubstring(rqutPrdCn);
 
   return (
     <S.Container>
       <S.Card to={`/policy/${bizId}`}>
         <S.Texts>
-          <S.Title>{policyTitle}</S.Title>
-          <S.Content>
-            {formatDate(startDate)} <br />~ {formatDate(endDate)}
-          </S.Content>
+          <S.Title>{polyBizSjnm}</S.Title>
+          <S.Content>{editDate}</S.Content>
         </S.Texts>
         <S.Img>
           {RandomImage && <img src={RandomImage} alt="랜덤 이미지" />}
