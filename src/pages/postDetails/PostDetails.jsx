@@ -1,15 +1,16 @@
 import { useParams } from 'react-router-dom';
 import * as S from './PostDetails.style';
-//import posts from '../../mockData/posts';
 import { useState } from 'react';
-import { LuSendHorizonal } from 'react-icons/lu';
 import { usePost } from '../../context/PostContext';
+import CommentList from '../../components/comment/CommentList';
+import CommentInput from '../../components/comment/CommentInput';
+import EditMenu from '../../components/editMenu/EditMenu';
 
 function PostDetails() {
   const { postId } = useParams();
   const { posts } = usePost();
   const post = posts.find((post) => post.id === parseInt(postId));
-  // console.log(postId);
+  console.log(postId);
 
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
@@ -26,13 +27,16 @@ function PostDetails() {
 
   return (
     <S.Container>
-      <S.AuthorInfo>
-        <img src={'https://bit.ly/4fhflX4'} alt={'사진'} />
-        <div>
-          <p>{post.authorName}</p>
-          <h6>{post.time}</h6>
-        </div>
-      </S.AuthorInfo>
+      <S.AuthorBox>
+        <S.AuthorInfo>
+          <img src={'https://bit.ly/4fhflX4'} alt={'사진'} />
+          <div>
+            <p>유니</p>
+            <h6>방금 전</h6>
+          </div>
+        </S.AuthorInfo>
+        <EditMenu />
+      </S.AuthorBox>
       <S.PostContent>
         <h3>{post.title}</h3>
         <p>{post.content}</p>
@@ -43,30 +47,14 @@ function PostDetails() {
       </S.CommentCount>
       <S.Divider />
 
-      <S.CommentList>
-        {comments.map((comment, index) => (
-          <S.CommentBox key={index}>
-            <img src={'https://bit.ly/4fhflX4'} alt={'사진'} />
-            <S.Comment>
-              <h6>유니</h6>
-              <p>{comment}</p>
-            </S.Comment>
-          </S.CommentBox>
-        ))}
-      </S.CommentList>
+      <CommentList comments={comments} />
 
       <form onSubmit={handleAddComment}>
-        <S.CommentInputBox>
-          <S.CommentInput>
-            <input
-              type="text"
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              placeholder="댓글을 입력하세요"
-            />
-            <LuSendHorizonal onClick={handleAddComment} />
-          </S.CommentInput>
-        </S.CommentInputBox>
+        <CommentInput
+          newComment={newComment}
+          setNewComment={setNewComment}
+          handleAddComment={handleAddComment}
+        />
       </form>
     </S.Container>
   );

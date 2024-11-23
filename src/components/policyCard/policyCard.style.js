@@ -56,11 +56,16 @@ const Texts = styled.div`
 `;
 
 const Title = styled.div`
-  display: flex;
+  display: -webkit-box;
   font-size: 26px;
   color: var(--color-blue-700);
   font-weight: bold;
-  word-break: keep-all;
+  word-break: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 `;
 
 const Content = styled.div`
@@ -69,7 +74,7 @@ const Content = styled.div`
   word-break: keep-all;
   font-weight: bold;
   color: #000000;
-  width: 150px;
+  /* width: 150px; */
 `;
 
 const Img = styled.div`
