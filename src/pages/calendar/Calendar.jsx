@@ -12,8 +12,8 @@ import {
 import * as S from './Calendar.style';
 import CalendarHeader from '../../components/calendarHeader/calendarHeader';
 import Day from '../../components/day/day';
-import policyDatas from '../../moks/policyData.json';
-import userInfo from '../../moks/userData.json';
+import policyDatas from '../../mocks/policyData.json';
+import userInfo from '../../mocks/userData.json';
 
 const user = userInfo[0];
 const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
